@@ -26,7 +26,8 @@ COPY . /code/
 # Collect static files
 RUN python manage.py collectstatic --noinput
 
-RUN python manage.py makemigrations && python manage.py migrate
+#RUN python manage.py makemigrations && python manage.py migrate
 
+# Change port set by heroku as an environment variable
 CMD gunicorn ml_service.wsgi:application --bind 0.0.0.0:$PORT
 
